@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+package produk;
+
+message Produk {
+    int32 id = 1;
+    string nama = 2;
+    string deskripsi = 3;
+    float harga = 4;
+    string gambar = 5;
+    int32 stok = 6;
+}
+
+message ProdukListRequest {
+}
+
+message ProdukRequest {
+    int32 id = 1;
+}
+
+message ProdukResponse {
+    int32 id = 1;
+    string nama = 2;
+    string deskripsi = 3;
+    float harga = 4;
+    string gambar = 5;
+    int32 stok = 6;
+}
+
+message ProdukListResponse {
+    repeated Produk produk = 1;
+}
+
+message ProdukCreateRequest {
+    string nama = 1;
+    string deskripsi = 2;
+    float harga = 3;
+    string gambar = 4;
+    int32 stok = 5;
+}
+
+message ProdukCreateResponse {
+    int32 id = 1;
+    string nama = 2;
+    string deskripsi = 3;
+    float harga = 4;
+    string gambar = 5;
+    int32 stok = 6;
+}
+
+message ProdukUpdateRequest {
+    int32 id = 1;
+    string nama = 2;
+    string deskripsi = 3;
+    float harga = 4;
+    string gambar = 5;
+    int32 stok = 6;
+}
+
+message ProdukUpdateResponse {
+    int32 id = 1;
+    string nama = 2;
+    string deskripsi = 3;
+    float harga = 4;
+    string gambar = 5;
+    int32 stok = 6;
+}
+
+message ProdukDeleteRequest {
+    int32 id = 1;
+}
+
+message ProdukDeleteResponse {
+    int32 id = 1;
+}
+
+message HitungHargaRequest {
+    repeated int32 id = 1;
+}
+
+message HitungHargaResponse {
+    float harga = 1;
+}
+
+service ProdukService {
+    rpc FindAll(ProdukListRequest) returns (ProdukListResponse);
+    rpc FindById(ProdukRequest) returns (ProdukResponse);
+    rpc Create(ProdukCreateRequest) returns (ProdukCreateResponse);
+    rpc Update(ProdukUpdateRequest) returns (ProdukUpdateResponse);
+    rpc Delete(ProdukDeleteRequest) returns (ProdukDeleteResponse);
+    rpc HitungHarga(HitungHargaRequest) returns (HitungHargaResponse);
+}
+
+
+
